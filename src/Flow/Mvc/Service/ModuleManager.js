@@ -2,7 +2,7 @@ import ModuleEvent from "../../ModuleManager/ModuleEvent";
 
 export default class ModuleManager {
     constructor(modules, eventManager) {
-        this.modules = [];
+        this.modules = new Set();
         this.eventManager = null;
         this.modulesAreLoaded = false;
         this.moduleCache = new Map();
@@ -87,10 +87,10 @@ export default class ModuleManager {
     }
 
     onLoadModules() {
-        debugger;
         if (this.modulesLoaded) {
             return this;
         }
+        
         for (let moduleName of this.modules) {
             this.loadModule(moduleName);
         }

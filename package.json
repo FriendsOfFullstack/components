@@ -1,0 +1,30 @@
+{
+  "name": "fullstack-components",
+  "version": "0.1.0",
+  "description": "- https://github.com/systemjs/systemjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FriendsOfFullstack/components.git"
+  },
+  "author": "Tobias Oberrauch <tobiasuidriven.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FriendsOfFullstack/components/issues"
+  },
+  "homepage": "https://github.com/FriendsOfFullstack/components#readme",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "gulp": "^3.9.1"
+  }
+}
