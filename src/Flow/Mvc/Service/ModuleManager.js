@@ -43,9 +43,7 @@ export default class ModuleManager {
         this.event = event;
     }
 
-    loadModule(module) {
-        let moduleName = module.getName();
-
+    loadModule(moduleName) {
         if (this.moduleCache.has(moduleName)) {
             return this.moduleCache.get(moduleName);
         }
@@ -90,7 +88,7 @@ export default class ModuleManager {
         if (this.modulesLoaded) {
             return this;
         }
-        
+
         for (let moduleName of this.modules) {
             this.loadModule(moduleName);
         }
@@ -99,7 +97,6 @@ export default class ModuleManager {
     }
 
     attachDefaultListeners() {
-        debugger;
         this.eventManager.attach('loadModules', [this, 'onLoadModules']);
     }
 }

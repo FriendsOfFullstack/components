@@ -1,53 +1,49 @@
 export default class Event {
 
     constructor(name = null, target = null, parameters = null) {
-        this.arguments = new Map();
-
         if (name) {
             this.name = name;
         }
         if (target) {
             this.target = target;
         }
-        if (parameters) {
-            this.parameters = parameters;
-        }
+        this.parameters = parameters || new Map();
     }
 
-    get name() {
-        return this.arguments.get('name');
+    getName() {
+        return this.name;
     }
 
-    set name(name) {
+    setName(name) {
         if (typeof name !== 'string') {
             throw new InvalidArgumentException();
         }
 
-        this.arguments.set('name', name);
+        this.name = name;
 
         return this;
     }
 
-    get target() {
-        return this.arguments.get('target');
+    getTarget() {
+        return this.target;
     }
 
-    set target(target) {
-        this.arguments.set('target', target);
+    setTarget(target) {
+        this.target = target;
 
         return this;
     }
 
-    get parameters() {
-        if (!this.arguments.has('parameters')) {
+    getParameters() {
+        if (!this.parameters) {
             this.parameters = new Map();
         }
 
-        return this.arguments.get('parameters');
+        return this.parameters;
     }
 
-    set parameters(parameters) {
-        this.arguments.set('parameters', parameters);
+    setParameters(parameters) {
+        this.parameters = parameters;
 
         return this;
     }
@@ -64,12 +60,12 @@ export default class Event {
     }
 
     stopPropagation(stop = true) {
-        this.arguments.set('stopPropagation', stop);
+        this.stopPropagation = stop;
 
         return this;
     }
 
     propagationIsStopped() {
-        return this.arguments.get('stopPropagation');
+        return this.stopPropagation;
     }
 }

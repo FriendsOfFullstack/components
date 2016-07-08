@@ -2,9 +2,6 @@ let ServiceManager = require('../../ServiceManager/ServiceManager');
 let ServiceManagerConfig = require('../../ServiceManager/ServiceManagerConfig');
 
 class Application {
-    constructor() {
-
-    }
     static init(configuration) {
         let serviceManagerConfig = configuration.hasOwnProperty('service_manager') ? configuration.service_manager : [];
         let serviceManager = new ServiceManager(new ServiceManagerConfig(serviceManagerConfig));

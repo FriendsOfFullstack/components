@@ -1,9 +1,9 @@
 class Collector extends Map {
-    get config() {
+    getConfig() {
         return this.get('config');
     }
 
-    set config(config) {
+    setConfig(config) {
         this.set('config', config);
     }
 }

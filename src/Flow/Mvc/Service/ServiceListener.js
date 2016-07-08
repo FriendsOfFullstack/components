@@ -2,7 +2,7 @@ export default class ServiceListener {
     constructor() {
 
     }
-    set defaultServiceConfig(configuration) {
+    setDefaultServiceConfig(configuration) {
 
     }
     addServiceManager(serviceManager, key, moduleInterface, method) {

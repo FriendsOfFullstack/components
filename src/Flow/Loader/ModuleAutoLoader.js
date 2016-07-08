@@ -13,31 +13,25 @@ export default class ModuleAutoLoader {
     }
 
     getModuleClassMap() {
-
     }
 
     setModuleClassMap(classMap) {
-
     }
 
     autoload(className) {
-
     }
 
     loadModuleFromDir(dirPath, className) {
-
     }
 
     loadModuleFromPhar(pharDir, className) {
-
     }
 
     register() {
-debugger;
+
     }
 
     unregister() {
-
     }
 
     registerPaths(paths) {
@@ -51,11 +45,9 @@ debugger;
     }
 
     getPaths() {
-
     }
 
     pharFileToModuleName() {
-
     }
 
     static normalizePath(path) {

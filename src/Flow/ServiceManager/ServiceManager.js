@@ -29,17 +29,17 @@ class ServiceManager {
         }
     }
 
-    set allowOverride(allowOverride) {
+    setAllowOverride(allowOverride) {
         this.config.set('allowOverride', allowOverride);
 
         return this;
     }
 
-    get allowOverride() {
+    getAllowOverride() {
         return this.config.get('allowOverride');
     }
 
-    set shareByDefault(shareByDefault) {
+    setShareByDefault(shareByDefault) {
         if (!this.allowOverride) {
             throw new RuntimeException(
                 'cannot alter default shared service setting; container is marked immutable (allow_override is false)'
@@ -51,27 +51,27 @@ class ServiceManager {
         return this;
     }
 
-    get shareByDefault() {
+    getShareByDefault() {
         return this.config.get('shareByDefault');
     }
 
-    set throwExceptionInCreate(throwExceptionInCreate) {
+    setThrowExceptionInCreate(throwExceptionInCreate) {
         this.config.set('throwExceptionInCreate', throwExceptionInCreate);
 
         return this;
     }
 
-    get throwExceptionInCreate() {
+    getThrowExceptionInCreate() {
         return this.config.get('throwExceptionInCreate');
     }
 
-    set retrieveFromPeeringManagerFirst(retrieveFromPeeringManagerFirst) {
+    setRetrieveFromPeeringManagerFirst(retrieveFromPeeringManagerFirst) {
         this.config.set('retrieveFromPeeringManagerFirst', retrieveFromPeeringManagerFirst);
 
         return this;
     }
 
-    get retrieveFromPeeringManagerFirst() {
+    getRetrieveFromPeeringManagerFirst() {
         return this.config.get('retrieveFromPeeringManagerFirst');
     }
 

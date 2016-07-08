@@ -3,24 +3,24 @@ import SharedEventManager from "./SharedEventManager";
 import StaticEventManager from "./StaticEventManager";
 import CallbackHandler from "../Stdlib/CallbackHandler";
 import ListenerAggregateInterface from './ListenerAggregateInterface';
+import ResponseCollection from "./ResponseCollection";
 
 export default class EventManager {
     constructor(identifiers = null) {
         this.arguments = new Map();
         this.events = new Map();
-        // todo set or not?
         this.identifiers = new Set();
     }
 
-    set eventClass(eventClass) {
+    setEventClass(eventClass) {
         this.arguments.set('eventClass', eventClass);
     }
 
-    set sharedManager(sharedManager) {
+    setSharedManager(sharedManager) {
         this.arguments.set('sharedManager', sharedManager);
     }
 
-    get sharedManager() {
+    getSharedManager() {
         let sharedManager = this.arguments.get('sharedManager');
         if (sharedManager instanceof SharedEventManager) {
             return sharedManager;
@@ -78,7 +78,7 @@ export default class EventManager {
     }
 
     triggerListeners(eventName, event, callback = null) {
-        let responses = new Set();
+        let responses = new ResponseCollection();
         let listeners = this.getListeners(eventName);
 
         let sharedListeners = this.getSharedListeners(eventName);
@@ -97,17 +97,17 @@ export default class EventManager {
             // todo: let listenerCallback = listener.callback;
             let listenerCallback = listener[0];
 
-            responses.add(listenerCallback.call(this, event));
+            responses.push(listenerCallback.call(listenerCallback, event));
 
             // if (event.propagationIsStopped()) {
                 // responses.setStopped(true);
                 // break;
             // }
 
-            // if (callback && callback.call(this, responses.last())) {
-                // responses.setStopped(true);
-                // break;
-            // }
+            if (callback && callback.call(this, responses.last())) {
+                responses.setStopped(true);
+                break;
+            }
         }
 
         return responses;
@@ -165,6 +165,7 @@ export default class EventManager {
         }
 
         let sharedListeners = new Map();
+
         for (let id of identifiers) {
             let listeners = this.sharedManager.getListeners(id, eventName);
             if (!listeners) {

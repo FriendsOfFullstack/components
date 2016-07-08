@@ -1,4 +1,5 @@
-import ListenerOptions from './ListenerOptions';
+import fs from "fs";
+import ListenerOptions from "./ListenerOptions";
 
 export default class AbstractListener {
     constructor(options = null) {
@@ -15,5 +16,11 @@ export default class AbstractListener {
 
     setOptions(options) {
         this.options = options;
+    }
+
+    writeToFile(filePath, content) {
+        fs.writeFileSync(filePath, content);
+
+        return this;
     }
 }

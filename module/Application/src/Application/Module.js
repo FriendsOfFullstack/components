@@ -11,7 +11,7 @@ export default class Module {
     }
 
     getConfig() {
-        return {};
+        return require(__dirname + '/config/module.config');
     }
 
     init() {

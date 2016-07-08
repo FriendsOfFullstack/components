@@ -10,7 +10,7 @@ class FileCollector extends Collector {
     collect() {
         return fs.readFileSync(this.config.rootPath + '/composer.json', 'utf-8');
     }
-    get fileName() {
+    getFileName() {
         return this.get('fileName');
     }
 }

@@ -1,44 +1,38 @@
-import Event from '../EventManager/Event';
+import Event from "../EventManager/Event";
 
 export default class ModuleEvent extends Event {
-    constructor() {
-        super();
-
-        this.arguments = new Map();
+    getModuleName() {
+        return this.moduleName;
     }
 
-    get moduleName() {
-        return this.arguments.get('moduleName');
-    }
-
-    set moduleName(moduleName) {
+    setModuleName(moduleName) {
         if (typeof moduleName !== 'string') {
             throw new InvalidArgumentException();
         }
 
-        this.arguments.set('moduleName', moduleName);
+        this.moduleName = moduleName;
 
         return this;
     }
 
-    get module() {
-        return this.arguments.get('module');
+    getModule() {
+        return this.module;
     }
 
-    set module(module) {
-        this.arguments.set('moduleName', module);
+    setModule(module) {
+        this.module = module;
 
         return this;
     }
 
 
-    get configListener() {
-        return this.arguments.get('configListener');
+    getConfigListener() {
+        return this.configListener;
     }
 
-    set configListener(configListener) {
-        this.setParam('configListener', configListener);
-        this.arguments.set('configListener', configListener);
+    setConfigListener(configListener) {
+        this.setParameter('configListener', configListener);
+        this.configListener = configListener;
 
         return this;
     }

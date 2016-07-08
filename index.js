@@ -1,6 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-import Application from './src/Flow/Mvc/Application/Application';
+import Application from "./src/Flow/Mvc/Application/Application";
 
 // const REQUEST_MICROTIME = new Date().getTime();
 // const APPLICATION_ENV = 'dev';
@@ -17,6 +15,4 @@ global.import = function (className) {
 
 
 let configuration = require('./config/application.config');
-
-
 Application.init(configuration).run();

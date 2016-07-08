@@ -1,5 +1,5 @@
 import AbstractListener from "./AbstractListener";
-import AutoLoaderListener from "./AutoloaderListener";
+import AutoLoaderListener from "./AutoLoaderListener";
 import ConfigListener from "./ConfigListener";
 import InitTrigger from "./InitTrigger";
 import LocatorRegistrationListener from "./LocatorRegistrationListener";
@@ -35,22 +35,21 @@ export default class DefaultListenerAggregate extends AbstractListener {
      * @returns {DefaultListenerAggregate}
      */
     attach(events) {
-        let options = this.options;
-        let configListener = this.configListener;
-        let locatorRegistrationListener = new LocatorRegistrationListener(options);
+        let options = this.getOptions();
+        let configListener = this.getConfigListener();
 
         this.listeners.add(events.attach(new ModuleLoaderListener(options)));
         this.listeners.add(events.attach('loadModule.resolve', new ModuleResolverListener));
-        this.listeners.add(events.attach('loadModule', new AutoLoaderListener(options), 9000));
+        // this.listeners.add(events.attach('loadModule', new AutoLoaderListener(options), 9000));
 
-        if (options.checkDependencies) {
-            this.listeners.add(events.attach('loadModule', new ModuleDependencyCheckerListener, 8000));
+        if (options.getCheckDependencies()) {
+            // this.listeners.add(events.attach('loadModule', new ModuleDependencyCheckerListener, 8000));
         }
 
         this.listeners.add(events.attach('loadModule', new InitTrigger(options)));
-        this.listeners.add(events.attach('loadModule', new OnBootstrapListener(options)));
-        this.listeners.add(events.attach(locatorRegistrationListener));
-        this.listeners.add(events.attach(configListener));
+        // this.listeners.add(events.attach('loadModule', new OnBootstrapListener(options)));
+        this.listeners.add(events.attach(new LocatorRegistrationListener(options)));
+        // this.listeners.add(events.attach(configListener));
 
         return this;
     }

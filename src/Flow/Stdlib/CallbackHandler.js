@@ -13,23 +13,21 @@ export default class CallbackHandler {
         return this.callback;
     }
 
-    call(...args) {
+    call(context, ...args) {
         let callback = this.getCallback();
 
         if (Array.isArray(callback)) {
             let instance = callback[0];
             let methodName = callback[1];
 
-            return instance[methodName].apply(this, args);
+            return instance[methodName].apply(instance, args);
         }
-        
-        return callback.call(this, args);
+
+        if (Reflect.getPrototypeOf(callback).hasOwnProperty('__invoke')) {
+            return callback['__invoke'].apply(callback, args);
+        }
     }
 
-    // __invoke(...args) {
-    //     return this.call(args);
-    // }
-    
     getMetadata() {
         return this.metadata;
     }

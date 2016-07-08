@@ -47,8 +47,8 @@ export default class ModuleLoaderListener extends AbstractListener {
     }
 
     onLoadModulesPost(event) {
-        debugger;
         this.moduleLoader.unregister();
+        
         this.writeArrayToFile(
             this.options.getModuleMapCacheFile(),
             this.moduleLoader.getModuleClassMap()
