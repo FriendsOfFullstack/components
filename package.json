@@ -1,21 +1,16 @@
 {
-  "name": "fullstack-components",
+  "name": "fusco",
   "version": "0.1.0",
-  "description": "- https://github.com/systemjs/systemjs",
+  "description": "Fullstack components: Professional JS packages ready for NodeJS. Focused on Simplicity, Reusability, and Performance",
   "main": "index.js",
-  "directories": {
-    "doc": "doc",
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FriendsOfFullstack/components.git"
   },
-  "author": "Tobias Oberrauch <tobiasuidriven.com>",
-  "license": "ISC",
+  "author": "Tobias Oberrauch <tobias@uidriven.com>",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/FriendsOfFullstack/components/issues"
   },
