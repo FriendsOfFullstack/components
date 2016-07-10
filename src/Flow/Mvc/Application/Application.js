@@ -9,15 +9,18 @@ class Application {
         serviceManager.get('ModuleManager').loadModules();
 
         let listenersFromAppConfig = configuration.hasOwnProperty('listeners') ? configuration.listeners : [];
-        // let config = serviceManager.get('Config');
-        // let listenersFromConfigService = config.has('listeners') ? config.get('listeners') : [];
+        let config = serviceManager.get('Config');
+        let listenersFromConfigService = config.has('listeners') ? config.get('listeners') : [];
 
-        // let listeners = listenersFromAppConfig.concat(listenersFromConfigService);
-        //
-        // return serviceManager.get('Application').bootstrap(listeners);
+        let listeners = listenersFromAppConfig.concat(listenersFromConfigService);
 
-        return new Application();
+        return serviceManager.get('Application').bootstrap(listeners);
     }
+
+    bootstrap() {
+        
+    }
+
     run() {
         console.log('run');
     }
